@@ -1,0 +1,45 @@
+<?php
+/**
+ * Guest Order form template
+ *
+ * @var $block \Born\OrderController\Block\Guestorder
+ */
+?>
+<div class="order">
+    <div class="order-form">
+        <form class="form" action="<?php $block->escapeUrl($block->getGuestOrderUrl()); ?>" method="post" id="guest-form" data-mage-init='{"validation":{}}'>
+        <?php echo $block->getBlockHtml('formkey'); ?>
+            <fieldset class="fieldset" data-hasrequired="<?php echo __('* Required Fields') ?>">
+            <div class="field note"><?php echo __('Enter Guest Order Number To Get Order Details.') ?></div>
+            <div class="required">
+                <label class="label" for="order-number"><span><?phpecho __('Order Number') ?></span></label>
+                <div class="control">
+                    <input name="order_id" value="" id="order_id" type="text" class="input-text" title="<?php echo __('Order Number') ?>" data-validate="{required:true, 'validate-number':true}">
+                </div>
+            </div>
+            <div class="actions-toolbar">
+                <div class="primary">
+                    <button type="submit" id="subit-order" class="action primary" >
+                        <span><?php echo __('Submit') ?></span>
+                    </button>
+                </div>
+            </div>
+            </fieldset>
+        </form>
+    </div>
+    <div class="result">
+        <pre class="order-result">
+            
+        </pre>
+    </div>
+</div>
+<script type="text/x-magento-init">
+    {
+    "*": {
+		"Born_OrderController/js/guestorder": {
+			"guestOrderUrl" : "<?php echo $block->escapeUrl($block->getGuestOrderUrl()); ?>"
+			}
+		}
+    }   
+</script>
+
